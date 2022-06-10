@@ -1,4 +1,4 @@
-project('c_darwin_active_app', ['c'],
+project('c_db', ['c'],
   default_options: [
    'warning_level=0',
    'c_std=gnu99',
@@ -37,9 +37,14 @@ osx_ldflags += ['-Wl,-framework,CoreFoundation']
 osx_ldflags += '-Wl,-framework,Carbon'
 osx_ldflags += ['-Wl,-framework,Foundation', '-Wl,-framework,AppKit']
 add_project_link_arguments(osx_ldflags, language : ['objc', 'c'])
+pwd_bin = find_program('pwd', required : true)
+pwd = run_command(pwd_bin, check: true).stdout().strip()
 #############################################################################
 inc = include_directories(
   'submodules/',
+  'submodules/c_stringfn/include',
+  'submodules/c_string_buffer/include',
+  'submodules/c_fsio/include',
   './',
   '../',
   '../../',
@@ -50,11 +55,13 @@ inc = include_directories(
 cargs_dep = dependency('cargs',fallback:['cargs', 'cargs_dep'])
 parson_shared_dep = dependency('parson',fallback:['parson', 'parson_shared_dep'])
 #//////////////////////////////////////////////////////////////////////
+subdir('submodules/meson_deps/meson/deps/c_stringfn')
+subdir('submodules/meson_deps/meson/deps/c_string_buffer')
+subdir('submodules/meson_deps/meson/deps/c_fsio')
 subdir('meson/deps/greatest')
-subdir('meson/deps/c_stringfn')
 subdir('meson/deps/ansicodes')
 subdir('meson/deps/bytes')
-subdir('meson/deps/c_string_buffer')
+#subdir('meson/deps/c_string_buffer')
 subdir('meson/deps/fs')
 #//////////////////////////////////////////////////////////////////////
 subdir('db')
