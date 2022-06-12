@@ -76,3 +76,9 @@ nodemon:
 	@$(PASSH) -L .nodemon.log $(NODEMON) -V -i build -w . -w '*/meson.build' --delay 1 -i '*/subprojects' -I  -w 'include/*.h' -w meson.build -w src -w Makefile -w loader/meson.build -w loader/src -w loader/include -i '*/embeds/*' -e tpl,build,sh,c,h,Makefile -x env -- bash -c 'make||true'
 
 
+git-pull:
+	@git pull --recurse-submodules
+git-submodules-pull-master:
+	@git submodule foreach git pull origin master --jobs=10
+git-submodules-update:
+	@git submodule update --init

@@ -39,6 +39,7 @@ osx_ldflags += ['-Wl,-framework,Foundation', '-Wl,-framework,AppKit']
 add_project_link_arguments(osx_ldflags, language : ['objc', 'c'])
 pwd_bin = find_program('pwd', required : true)
 pwd = run_command(pwd_bin, check: true).stdout().strip()
+meson_deps_dir = pwd+'/submodules/meson_deps'
 #############################################################################
 inc = include_directories(
   'submodules/',
