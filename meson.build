@@ -41,20 +41,22 @@ pwd_bin = find_program('pwd', required : true)
 pwd = run_command(pwd_bin, check: true).stdout().strip()
 #############################################################################
 inc = include_directories(
+  'submodules/meson_deps',
+  'submodules/meson_deps/submodules',
+  'submodules/meson_deps/submodules/c_fsio/include',
+  'submodules/meson_deps/submodules/c_string_buffer/include',
+  'submodules/meson_deps/submodules/c_stringfn/include',
+  'submodules/c_ansi',
   'submodules/',
-  'submodules/c_stringfn/include',
-  'submodules/c_string_buffer/include',
-  'submodules/c_fsio/include',
-  './',
-  '../',
-  '../../',
-  '../../../',
-  '../submodules',
+  './',  
 )
 #//***********************************************************/
-cargs_dep = dependency('cargs',fallback:['cargs', 'cargs_dep'])
-parson_shared_dep = dependency('parson',fallback:['parson', 'parson_shared_dep'])
+#cargs_dep = dependency('cargs',fallback:['cargs', 'cargs_dep'])
+#parson_shared_dep = dependency('parson',fallback:['parson', 'parson_shared_dep'])
 #//////////////////////////////////////////////////////////////////////
+subdir('submodules/meson_deps/meson/deps/cargs')
+subdir('submodules/meson_deps/meson/deps/parson')
+parson_shared_dep = parson_dep
 subdir('submodules/meson_deps/meson/deps/c_stringfn')
 subdir('submodules/meson_deps/meson/deps/c_string_buffer')
 subdir('submodules/meson_deps/meson/deps/c_fsio')
