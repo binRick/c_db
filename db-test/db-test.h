@@ -1,7 +1,7 @@
 #pragma once
-#include "db/db.h"
-#include "submodules/c_stringfn/include/stringfn.h"
-#include "submodules/greatest/greatest.h"
+#include "db.h"
+#include "stringfn.h"
+#include "greatest/greatest.h"
 #include <ctype.h>
 #include <stdarg.h>
 #include <stdbool.h>

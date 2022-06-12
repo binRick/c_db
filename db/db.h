@@ -6,12 +6,12 @@
 #include <string.h>
 //////////////////////////////////////////////////////
 #include "db-mgr.h"
-#include "submodules/bytes/bytes.h"
-#include "submodules/c_ansi/ansi-codes/ansi-codes.h"
-#include "submodules/c_stringfn/include/stringfn.h"
-#include "submodules/fs.c/fs.h"
-#include "submodules/parson/parson.h"
-#include "vendor/sqlite/sqlite3.h"
+#include "bytes/bytes.h"
+#include "ansi-codes/ansi-codes.h"
+#include "stringfn.h"
+#include "fs.h"
+#include "parson.h"
+#include "sqlite/sqlite3.h"
 //////////////////////////////////////////////////////
 #define PALETTEDB_MAX_HASH_BUCKETS    65535 * 256
 //////////////////////////////////////////////////////

@@ -28,12 +28,16 @@ meson_deps_dir = pwd+'/submodules/meson_deps'
 #############################################################################
 inc = include_directories(
   'submodules/meson_deps',
+  'submodules/meson_deps/vendor',
   'submodules/meson_deps/submodules',
+  'submodules/meson_deps/submodules/fs.c',
+  'submodules/meson_deps/submodules/c_ansi',
   'submodules/meson_deps/submodules/c_fsio/include',
   'submodules/meson_deps/submodules/c_string_buffer/include',
   'submodules/meson_deps/submodules/c_stringfn/include',
 )
 #//////////////////////////////////////////////////////////////////////
+subdir('submodules/meson_deps/meson/deps/sqlite3')
 subdir('submodules/meson_deps/meson/deps/cargs')
 subdir('submodules/meson_deps/meson/deps/parson')
 subdir('submodules/meson_deps/meson/deps/c_stringfn')

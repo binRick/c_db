@@ -1,6 +1,5 @@
 #include "db.h"
 
-
 unsigned long palettedb_hash(char *key, int length){
   unsigned long i;
   unsigned long hash;
