@@ -51,8 +51,7 @@ do-build:
 build: do-meson do-build
 
 uncrustify:
-	@$(UNCRUSTIFY) -c etc/uncrustify.cfg --replace $(TIDIED_FILES) 
-#	@shfmt -w scripts/*.sh
+	@$(UNCRUSTIFY) -c submodules/meson_deps/etc/uncrustify.cfg --replace $(TIDIED_FILES) 
 
 uncrustify-clean:
 	@find  . -type f -name "*unc-back*"|xargs -I % unlink %

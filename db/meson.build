@@ -10,9 +10,9 @@ db_inc_dirs = [
 db_deps = [
      cargs_dep,
      c_stringfn_dep,
-     parson_shared_dep,
+     parson_dep,
      fs_dep,
-     ansi_codes_dep, 
+     ansicodes_dep, 
      bytes_dep,
      c_string_buffer_dep,
      #c_timer_dep,

@@ -3,3 +3,5 @@ build
 .cache
 .nodemon.log
 *unc-back*
+.attic
+subprojects/cargs/

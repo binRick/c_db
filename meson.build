@@ -1,19 +1,9 @@
-project('c_db', ['c'],
-  default_options: [
-   'warning_level=0',
-   'c_std=gnu99',
-  ]
-)
-#############################################################
+project('c_db', ['c'],default_options: ['warning_level=0','c_std=gnu99'])
 cc = meson.get_compiler('c')
 #//***********************************************************/
-osx_ldflags = []
 deps = []
-bin_srcs = []
-submodule_srcs = []
 #############################################################
 fs = import('fs')
-gnome = import('gnome')
 pkg_config = import('pkgconfig')
 #############################################################
 config = configuration_data()
@@ -33,12 +23,7 @@ add_project_arguments('-Wno-gnu-alignof-expression', language : 'c')
 add_project_arguments('-Wno-varargs', language : 'c')
 add_project_arguments('-Wno-return-type', language : 'c')
 #############################################################################
-osx_ldflags += ['-Wl,-framework,CoreFoundation']
-osx_ldflags += '-Wl,-framework,Carbon'
-osx_ldflags += ['-Wl,-framework,Foundation', '-Wl,-framework,AppKit']
-add_project_link_arguments(osx_ldflags, language : ['objc', 'c'])
-pwd_bin = find_program('pwd', required : true)
-pwd = run_command(pwd_bin, check: true).stdout().strip()
+pwd = run_command(find_program('pwd', required : true), check: true).stdout().strip()
 meson_deps_dir = pwd+'/submodules/meson_deps'
 #############################################################################
 inc = include_directories(
@@ -47,25 +32,17 @@ inc = include_directories(
   'submodules/meson_deps/submodules/c_fsio/include',
   'submodules/meson_deps/submodules/c_string_buffer/include',
   'submodules/meson_deps/submodules/c_stringfn/include',
-  'submodules/c_ansi',
-  'submodules/',
-  './',  
 )
-#//***********************************************************/
-#cargs_dep = dependency('cargs',fallback:['cargs', 'cargs_dep'])
-#parson_shared_dep = dependency('parson',fallback:['parson', 'parson_shared_dep'])
 #//////////////////////////////////////////////////////////////////////
 subdir('submodules/meson_deps/meson/deps/cargs')
 subdir('submodules/meson_deps/meson/deps/parson')
-parson_shared_dep = parson_dep
 subdir('submodules/meson_deps/meson/deps/c_stringfn')
 subdir('submodules/meson_deps/meson/deps/c_string_buffer')
 subdir('submodules/meson_deps/meson/deps/c_fsio')
-subdir('meson/deps/greatest')
-subdir('meson/deps/ansicodes')
-subdir('meson/deps/bytes')
-#subdir('meson/deps/c_string_buffer')
-subdir('meson/deps/fs')
+subdir('submodules/meson_deps/meson/deps/fs')
+subdir('submodules/meson_deps/meson/deps/bytes')
+subdir('submodules/meson_deps/meson/deps/greatest')
+subdir('submodules/meson_deps/meson/deps/ansicodes')
 #//////////////////////////////////////////////////////////////////////
 subdir('db')
 subdir('db-test')
