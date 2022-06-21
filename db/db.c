@@ -1,4 +1,5 @@
-#include "db.h"
+#include "db/db.h"
+
 
 unsigned long palettedb_hash(char *key, int length){
   unsigned long i;
@@ -82,11 +83,12 @@ int db_list_ids(PalettesDB *DB){
 palettedb_id db_get_typeid_id(PalettesDB *DB, palettedb_type TYPEID){
   palettedb_id id  = 0;
   size_t       len = 0;
-printf("type:%llu\n",TYPEID);
-printf("path:%s\n",DB->Path);
-printf("db ok:%s\n",DB->db != NULL ? "OK" : "FAIL");
+
+  printf("type:%llu\n", TYPEID);
+  printf("path:%s\n", DB->Path);
+  printf("db ok:%s\n", DB->db != NULL ? "OK" : "FAIL");
   palettedb_one(DB, TYPEID, &id, &len);
-printf("len:%lu\n",len);
+  printf("len:%lu\n", len);
   if ((len > 0) && (id > 0)) {
     return(id);
   }

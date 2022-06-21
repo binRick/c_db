@@ -1,17 +1,15 @@
 #pragma once
-#ifndef PALETTES_DB_H
-#define PALETTES_DB_H
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 //////////////////////////////////////////////////////
-#include "db-mgr.h"
-#include "bytes/bytes.h"
 #include "ansi-codes/ansi-codes.h"
-#include "stringfn.h"
+#include "bytes/bytes.h"
+#include "db/db-mgr.h"
 #include "fs.h"
 #include "parson.h"
-#include "sqlite/sqlite3.h"
+#include "stringfn.h"
+#include "vendor/sqlite/sqlite3.h"
 //////////////////////////////////////////////////////
 #define PALETTEDB_MAX_HASH_BUCKETS    65535 * 256
 //////////////////////////////////////////////////////
@@ -33,4 +31,3 @@ unsigned long palettedb_hash(char *key, int length);
 int db_list_ids(PalettesDB *DB);
 
 //////////////////////////////////////////////////////
-#endif

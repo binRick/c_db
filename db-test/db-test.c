@@ -1,12 +1,13 @@
-#include "db-test.h"
-#include "db.h"
+#include "db-test/db-test.h"
+#include "db/db.h"
 
 int res = -1;
 
+
 void test_db_init(PalettesDB *db) {
-    res = init_palettes_db(db);
-    printf("db path:%s\n", db->Path);
-    printf("db init res:%d\n", res);
+  res = init_palettes_db(db);
+  printf("db path:%s\n", db->Path);
+  printf("db init res:%d\n", res);
 }
 
 
@@ -17,16 +18,18 @@ void test_db_ids(PalettesDB *db) {
 }
 
 
-
 int main(int argc, char **argv) {
   char *rec = malloc(32);
-  sprintf(rec,"%s","abc");
+
+  sprintf(rec, "%s", "abc");
   PalettesDB *PDB = malloc(sizeof(PalettesDB));
+
   PDB->Path = strdup("etc/db-test1.sqlite");
   test_db_init(PDB);
   test_db_ids(PDB);
   //add_palettedb_if_not_exist(PDB,1000,rec);
-  bool exists = db_typeid_exists(PDB,100);
-  printf("exists :%d\n",exists);
+  bool exists = db_typeid_exists(PDB, 100);
+
+  printf("exists :%d\n", exists);
   return(0);
 }
