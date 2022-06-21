@@ -2,9 +2,11 @@ db_test_srcs = [
   'db-test.c',
 ]
 db_include_dirs = [
+  '../db',
+  inc,
 ]
 db_test_deps = [
-  greatest_dep,
+  #//greatest_dep,
   c_stringfn_dep,
   db_dep,
 ]
@@ -20,7 +22,4 @@ if get_option('enable-binaries')
        inc,
      ],
   )
-  if get_option('enable-binary-tests')
-    test('db-test', db_test_exec, args: [])
-  endif
 endif

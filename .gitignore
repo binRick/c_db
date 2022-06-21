@@ -5,3 +5,8 @@ build
 *unc-back*
 .attic
 subprojects/cargs/
+etc/*.sqlite
+.make-log-*
+.make-log-*
+.make-*log*
+.DU

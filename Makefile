@@ -35,7 +35,7 @@ SOURCE_VENV_CMD = source $(VENV_DIR)/bin/activate
 TIDIED_FILES = \
 			   db*/*.h db*/*.c
 ##############################################################
-all: build test
+all: build 
 clean:
 	@rm -rf build
 test: do-test

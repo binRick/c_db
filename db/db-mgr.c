@@ -212,6 +212,7 @@ void *palettedb_one(palettedb            db,
                     size_t               *size){
   const void    *p;
   unsigned char *copy = NULL;
+  printf("one......\n");
 
   if (sqlite3_bind_int(db->one, 1, type) != SQLITE_OK) {
     return(copy);

@@ -26,7 +26,7 @@ int palettsdb_list_type_ids(PalettesDB *DB, palettedb_type TYPEID);
 int palettesdb_count_ids(PalettesDB *DB);
 int palettesdb_count_type_ids(PalettesDB *DB, palettedb_type TYPEID);
 palettedb_id add_palettedb_if_not_exist(PalettesDB *DB, palettedb_type TYPEID, char *RECORD);
-palettedb_id add_palettedb_(PalettesDB *DB, palettedb_type TYPEID, char *RECORD);
+palettedb_id add_palettedb(PalettesDB *DB, palettedb_type TYPEID, char *RECORD);
 int init_palettes_db(PalettesDB *);
 bool db_typeid_exists(PalettesDB *, palettedb_type TYPEID);
 unsigned long palettedb_hash(char *key, int length);

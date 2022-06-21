@@ -1,40 +1,32 @@
 #include "db-test.h"
-bool RUNNING = true;
+#include "db.h"
 
+int res = -1;
 
-void show_focus(){
-  fprintf(stdout,
-          "<%d>"
-          "\n",
-          123
-          );
+void test_db_init(PalettesDB *db) {
+    res = init_palettes_db(db);
+    printf("db path:%s\n", db->Path);
+    printf("db init res:%d\n", res);
 }
 
 
-TEST test_db(void) {
-  PASS();
+void test_db_ids(PalettesDB *db) {
+  printf("db path:%s\n", db->Path);
+  res = db_list_ids(db);
+  printf("db ids res:%d\n", res);
 }
 
-
-SUITE(the_suite) {
-  RUN_TEST(test_db);
-}
-
-
-GREATEST_MAIN_DEFS();
-
-
-int do_test(int argc, char **argv) {
-  GREATEST_MAIN_BEGIN();
-  for (int i = 0; i < TEST_ITERATIONS; i++) {
-    RUN_SUITE(the_suite);
-  }
-  GREATEST_MAIN_END();
-  return(0);
-}
 
 
 int main(int argc, char **argv) {
-  (void)argc; (void)argv;
-  return(do_test(argc, argv));
+  char *rec = malloc(32);
+  sprintf(rec,"%s","abc");
+  PalettesDB *PDB = malloc(sizeof(PalettesDB));
+  PDB->Path = strdup("etc/db-test1.sqlite");
+  test_db_init(PDB);
+  test_db_ids(PDB);
+  //add_palettedb_if_not_exist(PDB,1000,rec);
+  bool exists = db_typeid_exists(PDB,100);
+  printf("exists :%d\n",exists);
+  return(0);
 }
