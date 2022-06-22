@@ -10,7 +10,7 @@ db_deps = [
      c_stringfn_dep,
      parson_dep,
      fs_dep,
-     ansicodes_dep, 
+     ansi_codes_dep, 
      bytes_dep,
      c_string_buffer_dep,
      sqlite_dep
