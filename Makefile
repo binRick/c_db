@@ -35,20 +35,21 @@ SOURCE_VENV_CMD = source $(VENV_DIR)/bin/activate
 TIDIED_FILES = \
 			   db*/*.h db*/*.c
 ##############################################################
-all: build 
+all: build test
 clean:
 	@rm -rf build
 test: do-test
-do-test:
-
-do-meson: 
+install: do-install
+do-install: all
+	@meson install -C build
+do-meson:
 	@eval cd . && {  meson build || { meson build --reconfigure || { meson build --wipe; } && meson build; }; }
+do-build: do-meson
+	@meson compile -C build
+do-test:
+	@passh meson test -C build -v
 
-do-build:
-	@eval cd . && { ninja -C build; }
-	@eval cd . && { ninja test -C build -v; }
-
-build: do-meson do-build
+build: do-build
 
 uncrustify:
 	@$(UNCRUSTIFY) -c submodules/meson_deps/etc/uncrustify.cfg --replace $(TIDIED_FILES) 
