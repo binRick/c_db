@@ -1,6 +1,6 @@
+subdir('meson_deps/meson/sqlite3')
 subdir('meson_deps/meson/args')
 subdir('meson_deps/meson/inc')
-subdir('meson_deps/meson/deps/sqlite3')
 subdir('meson_deps/meson/deps/cargs')
 subdir('meson_deps/meson/deps/parson')
 subdir('meson_deps/meson/deps/c_stringfn')

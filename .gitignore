@@ -10,3 +10,5 @@ etc/*.sqlite
 .make-log-*
 .make-*log*
 .DU
+subprojects/packagecache
+subprojects/*/*
