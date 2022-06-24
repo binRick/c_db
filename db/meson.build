@@ -13,7 +13,7 @@ db_deps = [
      ansi_codes_dep, 
      bytes_dep,
      c_string_buffer_dep,
-     sqlite_dep
+     sqlite3_dep
 ]
 
 db_lib = static_library('db',
