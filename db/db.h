@@ -9,7 +9,6 @@
 #include "fs.h"
 #include "parson.h"
 #include "stringfn.h"
-#include "vendor/sqlite/sqlite3.h"
 //////////////////////////////////////////////////////
 #define PALETTEDB_MAX_HASH_BUCKETS    65535 * 256
 //////////////////////////////////////////////////////

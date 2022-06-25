@@ -43,11 +43,11 @@ install: do-install
 do-install: all
 	@meson install -C build
 do-meson:
-	@eval cd . && {  meson build || { meson build --reconfigure || { meson build --wipe; } && meson build; }; }
+	@meson build || { meson build --reconfigure || { meson build --wipe; } && meson build; }
 do-build: do-meson
-	@meson compile -C build
+	@passh meson compile -C build
 do-test:
-	@passh meson test -C build -v
+	@passh meson test -C build -v --print-errorlogs	
 
 build: do-build
 
