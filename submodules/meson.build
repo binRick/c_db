@@ -1,4 +1,5 @@
 subdir('meson_deps/meson/sqlite3')
+subdir('meson_deps/meson/deps/vt100utils')
 subdir('meson_deps/meson/deps/c_stringfn')
 subdir('meson_deps/meson/deps/parson')
 subdir('meson_deps/meson/deps/log.h')
