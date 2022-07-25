@@ -1,10 +1,9 @@
 project('c_db', ['c'],default_options: ['warning_level=0','c_std=gnu99'],
-  subproject_dir: 'submodules/meson_deps/subprojects',
   )
 cc = meson.get_compiler('c')
+passh_program = find_program('passh', required : true)
 pwd = meson.current_source_dir()
 meson_deps_dir = join_paths(meson.current_source_dir(),'submodules/meson_deps')
-subdir('meson')
 inc = [
   include_directories(
     'db', '.',
@@ -18,7 +17,9 @@ inc = [
   ),
 ]
 #//////////////////////////////////////////////////////////////////////
+subdir('submodules/meson_deps/meson/sqlite3')
 subdir('submodules')
+subdir('meson')
 #//////////////////////////////////////////////////////////////////////
 subdir('db')
 subdir('db-test')
