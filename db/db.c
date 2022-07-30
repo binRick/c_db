@@ -87,7 +87,7 @@ palettedb_id db_get_typeid_id(PalettesDB *DB, palettedb_type TYPEID){
   printf("type:%llu\n", TYPEID);
   printf("path:%s\n", DB->Path);
   printf("db ok:%s\n", DB->db != NULL ? "OK" : "FAIL");
-  palettedb_one(DB, TYPEID, &id, &len);
+  palettedb_one(DB->db, TYPEID, &id, &len);
   printf("len:%lu\n", len);
   if ((len > 0) && (id > 0)) {
     return(id);
@@ -102,7 +102,7 @@ bool db_typeid_exists(PalettesDB *DB, palettedb_type TYPEID){
 
 
 palettedb_id add_palettes_db(PalettesDB *DB, palettedb_type TYPEID, char *RECORD){
-  palettedb_id id = palettedb_add(DB, TYPEID, (void *)RECORD, strlen(RECORD));
+  palettedb_id id = palettedb_add(DB->db, TYPEID, (void *)RECORD, strlen(RECORD));
 
   return(id);
 }

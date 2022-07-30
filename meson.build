@@ -1,4 +1,5 @@
-project('c_db', ['c'],default_options: ['warning_level=0','c_std=gnu99'],
+project('c_db', ['c'],default_options: ['warning_level=0','c_std=gnu99'],version: '0.0.1',
+  subproject_dir: 'submodules/meson_deps/subprojects',
   )
 cc = meson.get_compiler('c')
 passh_program = find_program('passh', required : true)

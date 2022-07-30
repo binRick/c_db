@@ -58,6 +58,7 @@ uncrustify-clean:
 	@find  . -type f -name "*unc-back*"|xargs -I % unlink %
 
 fix-dbg:
+	@$(SED) 's|, % c);|, %c);|g' -i $(TIDIED_FILES)
 	@$(SED) 's|, % s);|, %s);|g' -i $(TIDIED_FILES)
 	@$(SED) 's|, % lu);|, %lu);|g' -i $(TIDIED_FILES)
 	@$(SED) 's|, % d);|, %d);|g' -i $(TIDIED_FILES)
