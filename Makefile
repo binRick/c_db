@@ -52,7 +52,7 @@ do-test:
 build: do-build
 
 uncrustify:
-	@$(UNCRUSTIFY) -c submodules/meson_deps/etc/uncrustify.cfg --replace $(TIDIED_FILES) 
+	@$(UNCRUSTIFY) -c submodules/c_deps/etc/uncrustify.cfg --replace $(TIDIED_FILES) 
 
 uncrustify-clean:
 	@find  . -type f -name "*unc-back*"|xargs -I % unlink %
