@@ -89,5 +89,38 @@ meson-introspect-targets:
 	@meson introspect --targets -i meson.build
 meson-binaries:
 	@meson introspect --targets  meson.build -i | jq 'map(select(.type == "executable").filename)|flatten|join("\n")' -Mrc|xargs -I % echo ./build/%
+run-binary-nodemon:
+	@make meson-binaries | fzf --reverse | xargs -I % nodemon -w build --delay 1000 -x passh "./%"
 run-binary:
-	@make meson-binaries | fzf --reverse | xargs -I % passh "./%" 
+	@clear; make meson-binaries | env FZF_DEFAULT_COMMAND= \
+        fzf --reverse \
+            --preview-window='follow,wrap,right,80%' \
+            --bind 'ctrl-b:preview(make meson-build)' \
+            --preview='env bash -c {} -v -a' \
+            --ansi --border \
+            --cycle \
+            --header='Select Test Binary' \
+            --height='100%' \
+    | xargs -I % env bash -c "./%"
+run-binary-nodemon:
+	@make meson-binaries | fzf --reverse | xargs -I % nodemon -w build --delay 1000 -x passh "./%"
+meson-tests-list:
+	@meson test -C build --list
+meson-tests:
+	@{ make meson-tests-list; } |fzf \
+        --reverse \
+        --bind 'ctrl-b:preview(make meson-build)' \
+        --bind 'ctrl-t:preview(make meson-tests-list)'\
+        --bind 'ctrl-l:reload(make meson-tests-list)'\
+        --bind 'ctrl-k:preview(make clean meson-build)'\
+        --bind 'ctrl-y:preview-half-page-up'\
+        --bind 'ctrl-u:preview-half-page-down'\
+        --bind 'ctrl-/:change-preview-window(right,90%|down,90%,border-horizontal)' \
+        --preview='\
+            meson test --num-processes 1 -C build -v \
+                --no-stdsplit --print-errorlogs {}' \
+        --preview-window='follow,wrap,bottom,85%' \
+        --ansi \
+        --header='Select Test Case |ctrl+b:rebuild project|ctrl+k:clean build|ctrl+t:list tests|ctrl+l:reload test list|ctrl+/:toggle preview style|ctrl+y/u:scroll preview|'\
+        --header-lines=0 \
+        --height='100%'
