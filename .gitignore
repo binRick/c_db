@@ -12,3 +12,4 @@ etc/*.sqlite
 .DU
 subprojects/packagecache
 subprojects/*/*
+submodules/c_deps

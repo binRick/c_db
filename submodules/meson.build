@@ -1,4 +1,6 @@
 subdir('c_deps/meson/deps/djbhash')
+subdir('c_deps/meson/deps/module')
+subdir('c_deps/meson/deps/uuid4')
 subdir('c_deps/meson/deps/sdl2')
 subdir('c_deps/meson/deps/tiny-regex-c')
 subdir('c_deps/meson/deps/asprintf')
