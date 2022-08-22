@@ -16,7 +16,6 @@
 #define DELETE_QUERY                     "DELETE FROM blobs WHERE id = ?"
 #define CREATE_TABLE_QUERY               "CREATE TABLE IF NOT EXISTS blobs (id INTEGER PRIMARY KEY, type INTEGER, data BLOB)"
 
-
 void *palettedb_get_distinct_typeids(palettedb db, size_t *size, size_t *rows_qty){
   const void    *p;
   unsigned char *copy = NULL;
@@ -47,7 +46,6 @@ reset:
   sqlite3_reset(db->distinct_typeids);
   return(copy);
 }
-
 
 void *palettedb_get_typeid_ids(palettedb db, const palettedb_type type, size_t *size, size_t *rows_qty){
   const void    *p;
@@ -83,7 +81,6 @@ reset:
   return(copy);
 }
 
-
 void *palettedb_count_ids(palettedb db, size_t *size){
   const void    *p;
   unsigned char *copy = NULL;
@@ -101,7 +98,6 @@ reset:
   return(copy);
 }
 
-
 void *palettedb_count_typeids(palettedb db, size_t *size){
   const void    *p;
   unsigned char *copy = NULL;
@@ -115,7 +111,6 @@ reset:
   sqlite3_reset(db->count_typeids);
   return(copy);
 }
-
 
 void *palettedb_count_typeid(palettedb db, const palettedb_type type, size_t *size){
   const void    *p;
@@ -137,7 +132,6 @@ reset:
 
   return(copy);
 }
-
 
 palettedb_id palettedb_add(palettedb            db,
                            const palettedb_type type,
@@ -174,7 +168,6 @@ reset:
   return(id);
 }
 
-
 void *palettedb_get(palettedb db, palettedb_id id, size_t *size){
   const void    *p;
   unsigned char *copy = NULL;
@@ -204,7 +197,6 @@ reset:
 
   return(copy);
 }
-
 
 void *palettedb_one(palettedb            db,
                     const palettedb_type type,
@@ -243,7 +235,6 @@ reset:
   return(copy);
 }
 
-
 void palettedb_delete(palettedb db, palettedb_id id){
   if (sqlite3_bind_int64(db->delete, 1, id) != SQLITE_OK) {
     return;
@@ -255,11 +246,9 @@ void palettedb_delete(palettedb db, palettedb_id id){
   sqlite3_reset(db->delete);
 }
 
-
 static int try_again(void *arg, int times){
   return(1);
 }
-
 
 palettedb palettedb_open(const char *path){
   palettedb db;
@@ -417,7 +406,6 @@ palettedb palettedb_open(const char *path){
 
   return(db);
 } /* palettedb_open */
-
 
 void palettedb_close(palettedb db){
   if (!db) {

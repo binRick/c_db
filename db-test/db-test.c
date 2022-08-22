@@ -3,20 +3,17 @@
 
 int res = -1;
 
-
 void test_db_init(PalettesDB *db) {
   res = init_palettes_db(db);
   printf("db path:%s\n", db->Path);
   printf("db init res:%d\n", res);
 }
 
-
 void test_db_ids(PalettesDB *db) {
   printf("db path:%s\n", db->Path);
   res = db_list_ids(db);
   printf("db ids res:%d\n", res);
 }
-
 
 int main(int argc, char **argv) {
   char *rec = malloc(32);

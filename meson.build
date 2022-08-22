@@ -10,7 +10,7 @@ inc = [
     'db', '.',
   ),
   include_directories(
-    'submodules/c_deps/submodules','submodules/c_deps','submodules/c_deps/vendor',
+    'submodules/c_deps/submodules','submodules/c_deps',
     'submodules/c_deps/submodules/fs.c',
     'submodules/c_deps/submodules/c_ansi',
     'submodules/c_deps/submodules/c_string_buffer/include',

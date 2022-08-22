@@ -1,6 +1,5 @@
 #include "db/db.h"
 
-
 unsigned long palettedb_hash(char *key, int length){
   unsigned long i;
   unsigned long hash;
@@ -11,7 +10,6 @@ unsigned long palettedb_hash(char *key, int length){
   }
   return(hash % PALETTEDB_MAX_HASH_BUCKETS);
 }
-
 
 int db_list_ids(PalettesDB *DB){
   size_t         total_ids = 0, unique_typeids_qty = 0, typeid_qty = 0, type_ids_size = 0, type_ids_qty = 0, unique_typeids_size;
@@ -67,7 +65,6 @@ int db_list_ids(PalettesDB *DB){
     }
   }
 
-
   palettedb_count_typeid(DB->db, TYPEID, &typeid_qty);
   printf("type %llu has %lu items\n", TYPEID, typeid_qty);
 
@@ -78,7 +75,6 @@ int db_list_ids(PalettesDB *DB){
   printf("there are  %lu total ids\n", total_ids);
   return(0);
 } /* db_list_ids */
-
 
 palettedb_id db_get_typeid_id(PalettesDB *DB, palettedb_type TYPEID){
   palettedb_id id  = 0;
@@ -95,18 +91,15 @@ palettedb_id db_get_typeid_id(PalettesDB *DB, palettedb_type TYPEID){
   return(-1);
 }
 
-
 bool db_typeid_exists(PalettesDB *DB, palettedb_type TYPEID){
   return(db_get_typeid_id(DB, TYPEID) > 0);
 }
-
 
 palettedb_id add_palettes_db(PalettesDB *DB, palettedb_type TYPEID, char *RECORD){
   palettedb_id id = palettedb_add(DB->db, TYPEID, (void *)RECORD, strlen(RECORD));
 
   return(id);
 }
-
 
 palettedb_id add_palettedb_if_not_exist(PalettesDB *DB, palettedb_type TYPEID, char *RECORD){
   palettedb_id id = db_get_typeid_id(DB, TYPEID);
@@ -116,7 +109,6 @@ palettedb_id add_palettedb_if_not_exist(PalettesDB *DB, palettedb_type TYPEID, c
   }
   return(add_palettes_db(DB, TYPEID, RECORD));
 }
-
 
 int init_palettes_db(PalettesDB *DB){
   DB->db = palettedb_open(DB->Path);
