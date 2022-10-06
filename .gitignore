@@ -13,3 +13,5 @@ etc/*.sqlite
 subprojects/packagecache
 subprojects/*/*
 submodules/c_deps
+.meson.build*.log
+.meson-build*.log

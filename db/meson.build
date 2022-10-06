@@ -16,7 +16,7 @@ db_deps = [
      sqlite3_dep
 ]
 
-db_lib = static_library('db',
+db_lib = library('db',
   db_srcs,
   install: false,
   dependencies: db_deps,
